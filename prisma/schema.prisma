@@ -14,18 +14,29 @@ datasource db {
   provider = "postgresql"
 }
 
-model Validators {
+model Nodes {
+  // Raw data returned by the pRpc
   id                  String @id @default(cuid())
   ipAddress           String
   isPublic            Boolean
-  lastSeenTimestamp   BigInt
-  pubkey              String @unique @db.VarChar(44)
+  lastSeenTimestamp   Int
+  pubkey              String @db.VarChar(44)
   rpcPort             Int
+  nodePort            Int    @default(8717)
   storageCommitted    BigInt
   storageUsagePercent Int
   storageUsed         BigInt
   uptime              Int
   version             String
+
+  // Geolocation data
+  latitude            Float?
+  longitude           Float?
+  country             String?
+  city                String?
+  organisation        String?
+  
+  // Metadata
   createdAt           DateTime @default(now())
   updatedAt           DateTime @updatedAt
 

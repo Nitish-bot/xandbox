@@ -16,7 +16,7 @@ export class ValidatorsController {
   constructor(private readonly validatorsService: ValidatorsService) {}
 
   @Post()
-  create(@Body() createValidatorDto: Prisma.ValidatorsCreateInput) {
+  create(@Body() createValidatorDto: Prisma.NodesCreateInput) {
     return this.validatorsService.create(createValidatorDto);
   }
 
@@ -33,9 +33,9 @@ export class ValidatorsController {
   @Patch(':id')
   update(
     @Param('id') id: string,
-    @Body() updateValidatorDto: Prisma.ValidatorsUpdateInput,
+    @Body() updateNodes: Prisma.NodesUpdateInput,
   ) {
-    return this.validatorsService.update(id, updateValidatorDto);
+    return this.validatorsService.update(id, updateNodes);
   }
 
   @Delete(':id')

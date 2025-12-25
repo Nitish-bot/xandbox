@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Nodes" ADD COLUMN     "nodePort" INTEGER NOT NULL DEFAULT 8717;

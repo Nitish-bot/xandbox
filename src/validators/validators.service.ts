@@ -6,20 +6,20 @@ import { DatabaseService } from 'src/database/database.service';
 export class ValidatorsService {
   constructor(private readonly databaseService: DatabaseService) {}
 
-  async create(createValidator: Prisma.ValidatorsCreateInput) {
-    return this.databaseService.validators.create({
+  async create(createValidator: Prisma.NodesCreateInput) {
+    return this.databaseService.nodes.create({
       data: createValidator,
     });
   }
 
-  async createMany(createValidator: Prisma.ValidatorsCreateInput[]) {
-    return this.databaseService.validators.createMany({
+  async createMany(createValidator: Prisma.NodesCreateInput[]) {
+    return this.databaseService.nodes.createMany({
       data: createValidator,
     });
   }
 
   async findAll() {
-    return this.databaseService.validators.findMany({
+    return this.databaseService.nodes.findMany({
       distinct: ['pubkey'],
       orderBy: {
         createdAt: 'desc',
@@ -28,7 +28,7 @@ export class ValidatorsService {
   }
 
   async findOne(id: string) {
-    return this.databaseService.validators.findUnique({
+    return this.databaseService.nodes.findUnique({
       where: {
         id,
       },
@@ -36,7 +36,7 @@ export class ValidatorsService {
   }
 
   async findLatestPublicIp() {
-    return this.databaseService.validators.findMany({
+    return this.databaseService.nodes.findMany({
       where: {
         isPublic: true,
       },
@@ -51,8 +51,8 @@ export class ValidatorsService {
     });
   }
 
-  async update(id: string, updateValidator: Prisma.ValidatorsUpdateInput) {
-    return this.databaseService.validators.update({
+  async update(id: string, updateValidator: Prisma.NodesUpdateInput) {
+    return this.databaseService.nodes.update({
       data: updateValidator,
       where: {
         id,
@@ -61,7 +61,7 @@ export class ValidatorsService {
   }
 
   async remove(id: string) {
-    return this.databaseService.validators.delete({
+    return this.databaseService.nodes.delete({
       where: {
         id,
       },

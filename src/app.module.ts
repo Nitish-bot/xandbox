@@ -6,7 +6,7 @@ import { ValidatorsModule } from './validators/validators.module';
 import { ConfigModule } from '@nestjs/config';
 import { IngestionModule } from './ingestion/ingestion.module';
 import { ScheduleModule } from '@nestjs/schedule';
-import { PrpcModule } from './prpc/prpc.module';
+import { ExternApiModule } from './externApi/externApi.module';
 
 @Module({
   imports: [
@@ -18,7 +18,7 @@ import { PrpcModule } from './prpc/prpc.module';
       isGlobal: true,
       envFilePath: '.env',
     }),
-    PrpcModule,
+    ExternApiModule,
   ],
   controllers: [AppController],
   providers: [AppService],
